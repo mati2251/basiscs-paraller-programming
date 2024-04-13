@@ -35,7 +35,6 @@ int main()
   vadd_kernel_size = fread(vadd_kernel_source, 1, vadd_kernel_size, vadd_kernel_file);
   vadd_kernel_source[vadd_kernel_size] = '\0';
   fclose(vadd_kernel_file);
-  printf("%d %s\n", vadd_kernel_size, vadd_kernel_source);
   cl_platform_id platform_id = NULL;
   cl_device_id device = NULL;
   cl_uint ret_num_devices;
