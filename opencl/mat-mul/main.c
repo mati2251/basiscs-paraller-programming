@@ -124,22 +124,28 @@ int main()
     ret = clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&a_mem_obj);
     if (ret != CL_SUCCESS)
     {
-        fprintf(stderr, "Failed to set kernel arg 0.\n");
+        fprintf(stderr, "Failed to set kernel arg 1.\n");
         exit(1);
     }
     ret = clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&b_mem_obj);
     if (ret != CL_SUCCESS)
     {
-        fprintf(stderr, "Failed to set kernel arg 1.\n");
+        fprintf(stderr, "Failed to set kernel arg 2.\n");
         exit(1);
     }
     ret = clSetKernelArg(kernel, 3, sizeof(cl_mem), (void *)&c_mem_obj);
     if (ret != CL_SUCCESS)
     {
-        fprintf(stderr, "Failed to set kernel arg 2.\n");
+        fprintf(stderr, "failed to set kernel arg 3.\n");
         exit(1);
     }
-
+    ret = clSetKernelArg(kernel, 4, n * sizeof(int), NULL);
+    if (ret != CL_SUCCESS)
+    {
+        fprintf(stderr, "failed to set kernel arg 4.\n");
+        fprintf(stderr, "Error: %d", ret);
+        exit(1);
+    }
     size_t global_item_size[3] = {n, n, 1};
     size_t local_item_size[3] = {8, 8, 1};
     ret = clEnqueueNDRangeKernel(command_queue, kernel, 2, NULL, global_item_size, local_item_size, 0, 0, NULL);
