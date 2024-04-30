@@ -22,7 +22,7 @@ int main()
   char *vadd_kernel_source;
   size_t vadd_kernel_size;
 
-  fopen_s(&vadd_kernel_file ,"vadd.cl", "r");
+  vadd_kernel_file = fopen("vadd.cl", "r");
   if (!vadd_kernel_file)
   {
     fprintf(stderr, "Failed to load kernel.\n");

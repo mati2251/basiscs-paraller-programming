@@ -22,7 +22,7 @@ int main()
     char *kernel_source;
     size_t kernel_size;
 
-    fopen_s(&kernel_file, "mul.cl", "r");
+    kernel_file = fopen("mul.cl", "r");
     if (!kernel_file)
     {
         fprintf(stderr, "Failed to load kernel.\n");

@@ -9,5 +9,8 @@ add_executable(mat-mul mat-mul/main.c)
 target_compile_features(mat-mul PRIVATE cxx_auto_type)
 
 find_package(OpenCL REQUIRED)
-target_link_libraries(vadd OpenCL::OpenCL)
-target_link_libraries(mat-mul OpenCL::OpenCL)
+include_directories(${OpenCL_INCLUDE_DIRS})
+
+target_link_libraries(vadd ${OpenCL_LIBRARIES})
+target_link_libraries(mat-mul ${OpenCL_LIBRARIES})
+
